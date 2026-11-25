@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Search Wikimedia Commons images and see their source, author, and license.">
+<title>OpenLens | Image Search</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./" aria-label="OpenLens home"><span class="brand-icon" data-icon="lens" aria-hidden="true"></span>OpenLens</a>
+    <div class="header-actions">
+      <button id="explore" class="nav-action" aria-pressed="true"><span data-icon="grid"></span>Explore</button>
+      <button id="collection" class="nav-action" aria-pressed="false"><span data-icon="bookmark"></span>Saved <span id="saved-count" class="badge">0</span></button>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-content">
+      <p class="eyebrow"><span data-icon="lens"></span> WIKIMEDIA COMMONS IMAGE SEARCH</p>
+      <h1 id="hero-title">Find your next<br>reference.</h1>
+      <p class="hero-description">Explore images from Wikimedia Commons. Preview the original source, check the license, or save an image for later.</p>
+      <form id="search-form" class="search" role="search">
+        <span data-icon="search"></span>
+        <label class="sr-only" for="query">Search images</label>
+        <input id="query" name="query" type="search" required maxlength="100" placeholder="Search for mountains, architecture, wildlife…" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
+      <div class="suggestions" aria-label="Suggested searches">
+        <button data-topic="Alpine lake">Alpine lakes</button><button data-topic="Mumbai skyline">Mumbai</button><button data-topic="Kingfisher bird">Birds</button><button data-topic="Modern architecture">Architecture</button>
+      </div>
+    </div>
+  </section>
+  <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+    <div class="gallery-head">
+      <div><h2 id="gallery-title">Explore images</h2><p id="result-description" aria-live="polite"></p></div>
+      <div class="filters" role="group" aria-label="Image orientation">
+        <button data-orientation="all" aria-pressed="true">All images</button>
+        <button data-orientation="landscape" aria-pressed="false">Landscape</button>
+        <button data-orientation="portrait" aria-pressed="false">Portrait</button>
+        <button data-orientation="square" aria-pressed="false">Square</button>
+      </div>
+    </div>
+    <div id="results" class="results" aria-busy="false"></div>
+    <div class="load-row"><button id="more" class="button outline" hidden>Load more images</button></div>
+  </section>
+</main>
+<footer class="site-footer"><div class="wrap footer-inner"><span class="brand"><span class="brand-icon" data-icon="lens"></span>OpenLens</span><p>Search results and image credits from Wikimedia Commons.</p><a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Visit Wikimedia Commons</a></div></footer>
+
+<dialog id="preview" aria-labelledby="preview-title">
+  <div class="dialog-head"><h2 id="preview-title">Image details</h2><button class="icon-button" id="close-preview" aria-label="Close image details"><span data-icon="close"></span></button></div>
+  <div id="preview-content" class="dialog-content"></div>
+</dialog>
+<div id="notice" class="notice" role="status" aria-live="polite"></div>
+</body>
+</html>
